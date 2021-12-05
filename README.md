@@ -41,11 +41,13 @@ Dane pochodzą z dwóch API:
 
 ### Przykładowe widoki
 
-Desktop:
+#### Desktop:
+
 ![Desktop - information modal](./screenshots/Ship%20tracker%20-%20desktop%20-%20information%20modal.png)
 ![Explanation tooltip](./screenshots/Ship%20tracker%20-%20explanation%20tooltip.png)
 
-Mobile:
+#### Mobile:
+
 ![Mobile - pin active](./screenshots/Ship%20tracker%20-%20iPhone%206%20-%20pin%20active.png)
 ![Mobile - information modal](./screenshots/Ship%20tracker%20-%20iPhone%206%20-%20information%20modal.png)
 
