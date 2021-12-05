@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  app:
+    image: 'ship-tracker:latest'
+    build:
+      context: .
+    container_name: spring
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+      - API_BARENTSWATCH_TOKEN_URL=https://id.barentswatch.no/connect/token
+      - API_BARENTSWATCH_BASE_URL=https://www.barentswatch.no/bwapi/v1/geodata/ais/openpositions
+      - API_BARENTSWATCH_CLIENT_ID=
+      - API_BARENTSWATCH_CLIENT_SECRET=
+      - API_BARENTSWATCH_CLIENT_X_MAX=11
+      - API_BARENTSWATCH_CLIENT_X_MIN=10
+      - API_BARENTSWATCH_CLIENT_Y_MAX=70
+      - API_BARENTSWATCH_CLIENT_Y_MIN=60
+      - API_POSITIONSTACK_ACCESSKEY=
+      - API_POSITIONSTACK_URL=http://api.positionstack.com/v1/forward
+      - LIST_OF_INVALID_STRINGS=HOME
+      - CRON_FOR_TOKEN_GENERATOR=0 */58 * * * *
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
